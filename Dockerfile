@@ -13,7 +13,7 @@ LABEL org.label-schema.license="GPL-2.0" \
 RUN apt-get update -qq && apt-get dist-upgrade -y
 
 ## From the Build-Depends of the Debian R package, plus subversion
-## Check out R-devel
+## Check out R-patched
 ## Build and install according the standard 'recipe' I emailed/posted years ago
 ## Set Renviron.site to get libs from base R install
 ## Clean up
@@ -64,8 +64,10 @@ RUN apt-get update -qq && \
                 xvfb \
                 zlib1g-dev \
         && cd /tmp \
-        && svn co http://svn.r-project.org/R/trunk R-devel \
-        && cd /tmp/R-devel && \
+        && wget https://stat.ethz.ch/R/daily/R-patched.tar.bz2 \
+        && tar xaf R-patched.tar.bz2 \
+        && rm R-patched.tar.bz2 \
+        && cd /tmp/R-patched && \
                 R_PAPERSIZE=letter \
                 R_BATCHSAVE="--no-save --no-restore" \
                 R_BROWSER=xdg-open \
@@ -86,7 +88,7 @@ RUN apt-get update -qq && \
                         --with-readline \
                         --without-recommended-packages \
                         --program-suffix=dev && \
-                cd /tmp/R-devel && \
+                cd /tmp/R-patched && \
                 make && \
                 make install && \
                 rm -rf /tmp/R-devel /tmp/downloaded_packages/ /tmp/*.rds \
@@ -123,5 +125,6 @@ RUN apt-get update -qq && \
                 texlive-latex-base \
                 texlive-latex-recommended \
                 tk8.6-dev \
-        && apt-get autoremove -qy
+        && apt-get autoremove -qy \
+        && rm -rf /tmp/R-patched 
         
