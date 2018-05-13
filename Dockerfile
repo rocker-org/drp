@@ -66,8 +66,9 @@ RUN apt-get update -qq && \
         && cd /tmp \
         && wget https://stat.ethz.ch/R/daily/R-patched.tar.bz2 \
         && tar xaf R-patched.tar.bz2 \
-        && rm R-patched.tar.bz2 \
-        && cd /tmp/R-patched && \
+        && rm R-patched.tar.bz2
+
+RUN cd /tmp/R-patched && \
                 R_PAPERSIZE=letter \
                 R_BATCHSAVE="--no-save --no-restore" \
                 R_BROWSER=xdg-open \
@@ -100,20 +101,18 @@ RUN apt-get update -qq && \
         && ln -s Rpatched RP \
         && ln -s Rscriptpatched RPscript \
         && dpkg --purge  \
+     		dh-r \
                 libblas-dev \
                 libbz2-dev  \
                 libcairo2-dev \
                 libfontconfig1-dev \
                 libfreetype6-dev \
-                libglib2.0-dev \
-    		libharfbuzz-dev \
                 libjpeg-dev \
                 liblapack-dev  \
                 liblzma-dev \
                 libncurses5-dev \
                 libpango1.0-dev \
-                libpcre3-dev \
-                libpng12-dev \
+                libpng-dev \
                 libreadline-dev \
                 libtiff5-dev \
                 libxft-dev \
@@ -124,6 +123,7 @@ RUN apt-get update -qq && \
                 texlive-generic-recommended \
                 texlive-latex-base \
                 texlive-latex-recommended \
+                texlive-plain-generic \
                 tk8.6-dev \
         && apt-get autoremove -qy \
         && rm -rf /tmp/R-patched 
