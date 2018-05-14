@@ -3,9 +3,8 @@
 ## start with the Docker 'base R' Debian-based image
 FROM r-base:latest
 
-## That's me
 LABEL org.label-schema.license="GPL-2.0" \
-      org.label-schema.vcs-url="https://github.com/rocker-org/rocker-versioned" \
+      org.label-schema.vcs-url="https://github.com/rocker-org/drp" \
       org.label-schema.vendor="Rocker Project" \
       maintainer="Dirk Eddelbuettel <edd@debian.org>"
 
@@ -66,9 +65,8 @@ RUN apt-get update -qq && \
         && cd /tmp \
         && wget https://stat.ethz.ch/R/daily/R-patched.tar.bz2 \
         && tar xaf R-patched.tar.bz2 \
-        && rm R-patched.tar.bz2
-
-RUN cd /tmp/R-patched && \
+        && rm R-patched.tar.bz2 \
+        && cd /tmp/R-patched && \
                 R_PAPERSIZE=letter \
                 R_BATCHSAVE="--no-save --no-restore" \
                 R_BROWSER=xdg-open \
@@ -127,4 +125,6 @@ RUN cd /tmp/R-patched && \
                 tk8.6-dev \
         && apt-get autoremove -qy \
         && rm -rf /tmp/R-patched 
-        
+
+## Launch R-patched by defailt
+CMD ["RP"]
