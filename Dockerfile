@@ -77,9 +77,9 @@ RUN apt-get update -qq && \
                 R_PRINTCMD=/usr/bin/lpr \
                 LIBnn=lib \
                 AWK=/usr/bin/awk \
-                CFLAGS="$(R CMD config CFLAGS) -pg" \
-                CXXFLAGS="$(R CMD config CXXFLAGS) -pg" \
-                FFLAGS="$(R CMD config FFLAGS) -pg" \
+                CFLAGS="$(R CMD config CFLAGS)" \
+                CXXFLAGS="$(R CMD config CXXFLAGS)" \
+                FFLAGS="$(R CMD config FFLAGS)" \
                 ./configure --enable-R-shlib \
                 	--enable-memory-profiling \
                         --with-blas \
