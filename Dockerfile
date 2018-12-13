@@ -65,7 +65,8 @@ RUN apt-get update -qq && \
         && cd /tmp \
         && wget -q https://stat.ethz.ch/R/daily/R-patched.tar.bz2 \
         && tar xaf R-patched.tar.bz2 \
-        && rm R-patched.tar.bz2
+        && rm R-patched.tar.bz2 \
+        && if [ -d R-rc ]; then mv -v R-rc R-patched; fi
 
 RUN  cd /tmp/R-patched && \
                 R_PAPERSIZE=letter \
