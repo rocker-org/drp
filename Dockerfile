@@ -63,10 +63,11 @@ RUN apt-get update -qq && \
                 xvfb \
                 zlib1g-dev \
         && cd /tmp \
-        && wget https://stat.ethz.ch/R/daily/R-patched.tar.bz2 \
+        && wget -q https://stat.ethz.ch/R/daily/R-patched.tar.bz2 \
         && tar xaf R-patched.tar.bz2 \
-        && rm R-patched.tar.bz2 \
-        && cd /tmp/R-patched && \
+        && rm R-patched.tar.bz2
+
+RUN  cd /tmp/R-patched && \
                 R_PAPERSIZE=letter \
                 R_BATCHSAVE="--no-save --no-restore" \
                 R_BROWSER=xdg-open \
@@ -90,15 +91,17 @@ RUN apt-get update -qq && \
                 cd /tmp/R-patched && \
                 make && \
                 make install && \
-                rm -rf /tmp/R-devel /tmp/downloaded_packages/ /tmp/*.rds \
-        && echo "R_LIBS=\${R_LIBS-'/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library'}" >> /usr/local/lib/R/etc/Renviron \
+                rm -rf /tmp/R-devel /tmp/downloaded_packages/ /tmp/*.rds
+
+RUN echo "R_LIBS=\${R_LIBS-'/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library'}" >> /usr/local/lib/R/etc/Renviron \
         && echo 'options("repos"="https://cloud.r-project.org")' >> /usr/local/lib/R/etc/Rprofile.site \
         && cd /usr/local/bin \
         && mv R Rpatched \
         && mv Rscript Rscriptpatched \
         && ln -s Rpatched RP \
-        && ln -s Rscriptpatched RPscript \
-        && dpkg --purge  \
+        && ln -s Rscriptpatched RPscript
+
+RUN dpkg --purge  \
      		dh-r \
                 libblas-dev \
                 libbz2-dev  \
