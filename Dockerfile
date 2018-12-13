@@ -47,7 +47,7 @@ RUN apt-get update -qq && \
                 libxdmcp-dev/unstable \
                 libxt-dev \
                 mpack \
-                subversion \ 
+                subversion \
                 tcl8.6-dev \
                 texinfo \
                 texlive-base \
@@ -107,7 +107,6 @@ RUN apt-get update -qq && \
                 libfreetype6-dev \
                 libjpeg-dev \
                 liblapack-dev  \
-                liblzma-dev \
                 libncurses5-dev \
                 libpango1.0-dev \
                 libpng-dev \
@@ -124,7 +123,7 @@ RUN apt-get update -qq && \
                 texlive-plain-generic \
                 tk8.6-dev \
         && apt-get autoremove -qy \
-        && rm -rf /tmp/R-patched 
+        && rm -rf /tmp/R-patched
 
 ## Launch R-patched by defailt
 CMD ["RP"]
