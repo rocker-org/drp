@@ -100,7 +100,6 @@ RUN apt-get update -qq && \
         && ln -s Rpatched RP \
         && ln -s Rscriptpatched RPscript \
         && dpkg --purge  \
-     		dh-r \
                 libblas-dev \
                 libbz2-dev  \
                 libcairo2-dev \
@@ -108,7 +107,6 @@ RUN apt-get update -qq && \
                 libfreetype6-dev \
                 libjpeg-dev \
                 liblapack-dev  \
-                liblzma-dev \
                 libncurses5-dev \
                 libpango1.0-dev \
                 libpng-dev \
