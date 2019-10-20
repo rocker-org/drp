@@ -105,7 +105,7 @@ RUN apt-get update -qq && \
                 libbz2-dev  \
                 libcairo2-dev \
                 libfontconfig1-dev \
-                libfreetype6-dev \
+                libfreetype-dev \
                 libjpeg-dev \
                 liblapack-dev  \
                 libncurses5-dev \
@@ -118,7 +118,6 @@ RUN apt-get update -qq && \
                 tcl8.6-dev \
                 texlive-base \
                 texlive-fonts-recommended \
-                texlive-generic-recommended \
                 texlive-latex-base \
                 texlive-latex-recommended \
                 texlive-plain-generic \
