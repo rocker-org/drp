@@ -106,6 +106,7 @@ RUN apt-get update -qq && \
                 libcairo2-dev \
                 libfontconfig1-dev \
                 libfreetype-dev \
+                libfreetype6-dev \
                 libjpeg-dev \
                 liblapack-dev  \
                 libncurses5-dev \
