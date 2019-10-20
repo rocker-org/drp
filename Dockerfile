@@ -52,9 +52,9 @@ RUN apt-get update -qq && \
                 texinfo \
                 texlive-base \
                 texlive-fonts-recommended \
-                texlive-generic-recommended \
                 texlive-latex-base \
                 texlive-latex-recommended \
+                texlive-plain-generic \
                 tk8.6-dev \
                 x11proto-core-dev \
                 xauth \
