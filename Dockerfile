@@ -126,5 +126,8 @@ RUN apt-get update -qq && \
         && apt-get autoremove -qy \
         && rm -rf /tmp/R-patched
 
+## Copy 'checkbashisms' (as a local copy from devscripts package)
+COPY checkbashisms /usr/local/bin
+
 ## Launch R-patched by defailt
 CMD ["RP"]
