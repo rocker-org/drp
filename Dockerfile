@@ -32,7 +32,7 @@ RUN apt-get update -qq && \
                 libcairo2-dev/unstable \
                 libcurl4-openssl-dev/unstable \
                 libfreetype6-dev/unstable \
-    		libharfbuzz-dev/unstable \
+                libharfbuzz-dev/unstable \
                 libjpeg-dev \
                 liblapack-dev \
                 liblzma-dev \
@@ -52,9 +52,9 @@ RUN apt-get update -qq && \
                 texinfo \
                 texlive-base \
                 texlive-fonts-recommended \
+                texlive-generic-recommended \
                 texlive-latex-base \
                 texlive-latex-recommended \
-                texlive-plain-generic \
                 tk8.6-dev \
                 x11proto-core-dev \
                 xauth \
@@ -83,7 +83,7 @@ RUN apt-get update -qq && \
                 CXXFLAGS="$(R CMD config CXXFLAGS)" \
                 FFLAGS="$(R CMD config FFLAGS)" \
                 ./configure --enable-R-shlib \
-                	--enable-memory-profiling \
+                        --enable-memory-profiling \
                         --with-blas \
                         --with-lapack \
                         --with-readline \
@@ -100,25 +100,36 @@ RUN apt-get update -qq && \
         && mv Rscript Rscriptpatched \
         && ln -s Rpatched RP \
         && ln -s Rscriptpatched RPscript \
+        && rm -f /usr/share/fonts/type1/texlive-fonts-recommended/.uuid \
+        && rm -f /usr/share/fonts/type1/.uuid \
         && dpkg --purge  \
                 libblas-dev \
                 libbz2-dev  \
                 libcairo2-dev \
+                libfontconfig-dev \
                 libfontconfig1-dev \
                 libfreetype-dev \
                 libfreetype6-dev \
+                libglib2.0-dev \
+                libharfbuzz-dev \
+                libicu-le-hb-dev \
+                libicu-dev \
                 libjpeg-dev \
                 liblapack-dev  \
+                liblzma-dev \
                 libncurses5-dev \
                 libpango1.0-dev \
+                libpcre3-dev \
                 libpng-dev \
                 libreadline-dev \
+                libtiff-dev \
                 libtiff5-dev \
                 libxft-dev \
                 r-base-dev \
                 tcl8.6-dev \
                 texlive-base \
                 texlive-fonts-recommended \
+                texlive-generic-recommended \
                 texlive-latex-base \
                 texlive-latex-recommended \
                 texlive-plain-generic \
