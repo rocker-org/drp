@@ -103,7 +103,7 @@ RUN apt-get update -qq && \
         && rm -f /usr/share/fonts/type1/texlive-fonts-recommended/.uuid \
         && rm -f /usr/share/fonts/type1/.uuid \
         && echo "libicu67 hold" | dpkg --set-selections \
-        && dpkg --purge  \
+        && apt-get purge -qy \
                 libblas-dev \
                 libbz2-dev  \
                 libcairo2-dev \
