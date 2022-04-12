@@ -52,14 +52,14 @@ RUN apt-get update -qq && \
                 libxt-dev \
                 mpack \
                 subversion \
-                tcl8.6-dev \
+                tcl-dev \
                 texinfo \
                 texlive-base \
                 texlive-fonts-recommended \
                 texlive-plain-generic \
                 texlive-latex-base \
                 texlive-latex-recommended \
-                tk8.6-dev \
+                tk-dev \
                 x11proto-core-dev \
                 xauth \
                 xdg-utils \
@@ -130,6 +130,7 @@ RUN apt-get update -qq && \
                 libtiff5-dev \
                 libxft-dev \
                 r-base-dev \
+                tcl-dev \
                 tcl8.6-dev \
                 texlive-base \
                 texlive-fonts-recommended \
@@ -137,6 +138,7 @@ RUN apt-get update -qq && \
                 texlive-latex-base \
                 texlive-latex-recommended \
                 texlive-plain-generic \
+                tk-dev \
                 tk8.6-dev \
         && apt-get autoremove -qy \
         && rm -rf /tmp/R-patched
