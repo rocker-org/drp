@@ -69,9 +69,9 @@ RUN apt-get update -qq && \
                 xvfb \
                 zlib1g-dev \
         && cd /tmp \
-        && wget -q https://stat.ethz.ch/R/daily/R-patched.tar.bz2 \
-        && tar xaf R-patched.tar.bz2 \
-        && rm R-patched.tar.bz2 \
+        && wget -q https://stat.ethz.ch/R/daily/R-patched.tar.xz \
+        && tar xaf R-patched.tar.xz \
+        && rm R-patched.tar.xz \
         && if [ -d R-beta ]; then mv -v R-beta R-patched; fi \
         && if [ -d R-rc ]; then mv -v R-rc R-patched; fi \
         && cd /tmp/R-patched && \
