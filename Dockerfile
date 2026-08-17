@@ -9,7 +9,7 @@ LABEL org.label-schema.license="GPL-2.0" \
 
 ## Needed in case a base package has an interactive question
 ## (as e.g. base-passwd in Oct 2020)
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 ## From the Build-Depends of the Debian R package, plus subversion
 ## Check out R-patched
@@ -17,6 +17,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ## Set Renviron.site to get libs from base R install
 ## Clean up
 ## -- all in one command to get a single AUFS layer
+COPY array.c /tmp
 RUN apt-get update -qq \
     && apt-get dist-upgrade -y \
     && apt-get install -y --no-install-recommends \
@@ -67,6 +68,7 @@ RUN apt-get update -qq \
     && cd /tmp \
     && wget -q https://stat.ethz.ch/R/daily/R-patched.tar.xz \
     && tar xaf R-patched.tar.xz \
+    && mv -v /tmp/array.c /tmp/R-patched/src/main/array.c \
     && rm R-patched.tar.xz \
     && if [ -d R-beta ]; then mv -v R-beta R-patched; fi \
     && if [ -d R-rc ]; then mv -v R-rc R-patched; fi \
